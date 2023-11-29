@@ -7,14 +7,22 @@ import { invoke } from "@tauri-apps/api/tauri";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  greetingMessage = "";
+  data = "";
 
-  greet(event: SubmitEvent, name: string): void {
-    event.preventDefault();
-
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    invoke<string>("greet", { name }).then((text) => {
-      this.greetingMessage = text;
+  readCurrentConfig(): void {
+    invoke<string>("read_current_config", {}).then((text) => {
+      this.data = text;
+      const jsonObject = JSON.parse(text);
+      console.log(jsonObject);
     });
+  }
+
+  async writeNewConfig(jsonData: string): Promise<void> {
+    try {
+      await invoke('write_new_config', { json_data: jsonData });
+      console.log('Config successfully written');
+    } catch (error) {
+      console.error('Error writing config:', error);
+    }
   }
 }

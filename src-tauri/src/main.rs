@@ -1,40 +1,22 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-mod data;
-
-use data::Config;
-
 #[tauri::command]
-fn read_current_config() -> () {
-    let exe_path = std::env::current_exe().unwrap();
-    let parent_path = exe_path.parent().unwrap().to_str().unwrap();
-    let dest_path = String::from(parent_path) + "\\config\\config.json";
+fn read_current_config() -> String {
+    let exe_path = std::env::current_exe().expect("Failed to get current executable path");
+    let parent_path = exe_path.parent().expect("Failed to get parent path").to_str().expect("Failed to convert path to string");
+    let dest_path = format!("{}\\config\\config.json", parent_path);
 
-    let pulled_config_string = std::fs::read_to_string(&dest_path);
-    let read_result = serde_json::from_str::<Config>(&pulled_config_string.unwrap()).unwrap();
-
-
-    let _result = std::fs::write(
-        dest_path,
-        serde_json::to_string_pretty(&read_result).unwrap(),
-    );
+    std::fs::read_to_string(&dest_path).expect("Failed to read config file")
 }
 
 #[tauri::command]
-fn write_new_config() -> () {
-    let exe_path = std::env::current_exe().unwrap();
-    let parent_path = exe_path.parent().unwrap().to_str().unwrap();
-    let dest_path = String::from(parent_path) + "\\config\\config.json";
+fn write_new_config(json_data: String) -> Result<(), String> {
+    let exe_path = std::env::current_exe().map_err(|e| e.to_string())?;
+    let parent_path = exe_path.parent().ok_or("Failed to get parent path")?.to_str().ok_or("Failed to convert path to string")?;
+    let dest_path = format!("{}\\config\\config.json", parent_path);
 
-    let pulled_config_string = std::fs::read_to_string(&dest_path);
-    let read_result = serde_json::from_str::<Config>(&pulled_config_string.unwrap()).unwrap();
-
-
-    let _result = std::fs::write(
-        dest_path,
-        serde_json::to_string_pretty(&read_result).unwrap(),
-    );
+    std::fs::write(&dest_path, json_data).map_err(|e| e.to_string())
 }
 
 fn main() {
