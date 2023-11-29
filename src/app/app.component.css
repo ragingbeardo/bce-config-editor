@@ -5,3 +5,12 @@
 .config-sidebar {
     width: 12rem;
 }
+
+.config-content::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+.config-content::-webkit-scrollbar-thumb {
+    background: #ff0000;
+}
