@@ -1,7 +1,9 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use serde::{Deserialize, Serialize};
+mod data;
+
+use data::Config;
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
@@ -16,12 +18,6 @@ fn testing_paths() -> String {
     return String::from(parent_path);
 }
 
-#[derive(Serialize, Deserialize)]
-struct ModConfig {
-    street: String,
-    city: String,
-}
-
 #[tauri::command]
 fn test_write() -> () {
     let exe_path = std::env::current_exe().unwrap();
@@ -30,7 +26,7 @@ fn test_write() -> () {
     let dest_path_two = String::from(parent_path) + "\\config\\config2.json";
 
     let pulled_config_string = std::fs::read_to_string(&dest_path);
-    let read_result = serde_json::from_str::<ModConfig>(&pulled_config_string.unwrap()).unwrap();
+    let read_result = serde_json::from_str::<Config>(&pulled_config_string.unwrap()).unwrap();
 
 
     let _result = std::fs::write(
