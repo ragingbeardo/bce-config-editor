@@ -7,19 +7,20 @@ import { invoke } from "@tauri-apps/api/tauri";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  data = "";
+  
+  jsonConfig: any;
 
   readCurrentConfig(): void {
     invoke<string>("read_current_config", {}).then((text) => {
-      this.data = text;
-      const jsonObject = JSON.parse(text);
-      console.log(jsonObject);
+      this.jsonConfig = JSON.parse(text);
     });
   }
 
-  async writeNewConfig(jsonData: string): Promise<void> {
+  async writeNewConfig(): Promise<void> {
+    const jsonString = JSON.stringify(this.jsonConfig);
+
     try {
-      await invoke('write_new_config', { json_data: jsonData });
+      await invoke('write_new_config', { json_data: jsonString });
       console.log('Config successfully written');
     } catch (error) {
       console.error('Error writing config:', error);
