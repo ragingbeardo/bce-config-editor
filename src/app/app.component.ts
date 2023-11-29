@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { j } from "@tauri-apps/api/event-41a9edf5";
 import { invoke } from "@tauri-apps/api/tauri";
 
 @Component({
