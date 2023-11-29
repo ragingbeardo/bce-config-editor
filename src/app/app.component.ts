@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { j } from "@tauri-apps/api/event-41a9edf5";
 import { invoke } from "@tauri-apps/api/tauri";
 
 @Component({
@@ -17,10 +18,10 @@ export class AppComponent {
   }
 
   async writeNewConfig(): Promise<void> {
-    const jsonString = JSON.stringify(this.jsonConfig);
+    const jsonData = JSON.stringify(this.jsonConfig);
 
     try {
-      await invoke('write_new_config', { json_data: jsonString });
+      await invoke('write_new_config', { jsonData });
       console.log('Config successfully written');
     } catch (error) {
       console.error('Error writing config:', error);

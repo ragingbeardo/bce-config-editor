@@ -1,6 +1,31 @@
 <div class="container">
   <div>
-    <button (click)="readCurrentConfig()">Load</button>
-    <button (click)="writeNewConfig()">Save</button>
+    <h2>Edit Config</h2>
+    <div *ngIf="jsonConfig">
+      <h3>Global</h3>
+      <label>
+        Disable Everything:
+        <input type="checkbox" [(ngModel)]="jsonConfig.global.disableEverything">
+      </label>
+      <label>
+        Enable Debug Mode:
+        <input type="checkbox" [(ngModel)]="jsonConfig.global.enableDebugMode">
+      </label>
+  
+      <!-- Repeat similar blocks for other top-level sections like 'storage', 'hideout', etc. -->
+  
+      <h3>Storage</h3>
+      <!-- Add inputs for 'storage' related fields -->
+  
+      <h3>Hideout</h3>
+      <!-- Add inputs for 'hideout' related fields -->
+  
+      <!-- ... other sections ... -->
+  
+      <button (click)="writeNewConfig()">Save Config</button>
+    </div>
+    <div *ngIf="!jsonConfig">
+      <button (click)="readCurrentConfig()">Load Config</button>
+    </div>
   </div>
 </div>
