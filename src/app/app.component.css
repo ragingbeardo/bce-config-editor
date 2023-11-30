@@ -6,15 +6,6 @@
     width: 12rem;
 }
 
-.config-content::-webkit-scrollbar {
-    width: 0; /* Remove scrollbar space */
-    background: transparent; /* Optional: just make scrollbar invisible */
-}
-
-.config-content::-webkit-scrollbar-thumb {
-    background: #ff0000;
-}
-
 .content-scrollbar {
     --scrollbar-border-radius: 7px;
     --scrollbar-padding: 4px;
