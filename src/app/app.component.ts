@@ -1,6 +1,18 @@
 import { Component } from "@angular/core";
 import { invoke } from "@tauri-apps/api/tauri";
 
+enum Menu {
+  SETTINGS = 1,
+  STORAGE = 2,
+  HIDEOUT = 3,
+  TRADERS = 4,
+  ITEMS = 5,
+  PLAYER = 6,
+  SCAV = 7,
+  RAID = 8,
+  EVENTS = 9
+}
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -9,6 +21,12 @@ import { invoke } from "@tauri-apps/api/tauri";
 export class AppComponent {
   
   jsonConfig: any;
+  menu = Menu;
+  activeMenu: Menu = this.menu.SETTINGS;
+
+  setActiveMenu(menu: Menu): void {
+    this.activeMenu = menu;
+  }
 
   readCurrentConfig(): void {
     invoke<string>("read_current_config", {}).then((text) => {

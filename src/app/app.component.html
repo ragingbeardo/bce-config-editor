@@ -4,7 +4,7 @@
    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-700">
       <ul class="space-y-2 font-medium">
          <li>
-            <a href="#"
+            <a (click)="setActiveMenu(this.menu.SETTINGS)" href="#"
                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-8 h-8" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
                   xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000"
@@ -32,7 +32,7 @@
             </a>
          </li>
          <li>
-            <a href="#"
+            <a (click)="setActiveMenu(this.menu.STORAGE)" href="#"
                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg fill="#000000" class="flex-shrink-0 w-8 h-8" version="1.1" id="Layer_1"
                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
@@ -60,7 +60,7 @@
             </a>
          </li>
          <li>
-            <a href="#"
+            <a (click)="setActiveMenu(this.menu.HIDEOUT)" href="#"
                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-8 h-8" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
                   xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000"
@@ -85,7 +85,7 @@
             </a>
          </li>
          <li>
-            <a href="#"
+            <a (click)="setActiveMenu(this.menu.TRADERS)" href="#"
                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-8 h-8" fill="#000000" version="1.1" id="Layer_1"
                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 236 256"
@@ -103,7 +103,7 @@
             </a>
          </li>
          <li>
-            <a href="#"
+            <a (click)="setActiveMenu(this.menu.ITEMS)" href="#"
                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-8 h-8" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
                   xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000"
@@ -134,7 +134,7 @@
             </a>
          </li>
          <li>
-            <a href="#"
+            <a (click)="setActiveMenu(this.menu.PLAYER)" href="#"
                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-8 h-8" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
                   xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000"
@@ -159,7 +159,7 @@
             </a>
          </li>
          <li>
-            <a href="#"
+            <a (click)="setActiveMenu(this.menu.SCAV)" href="#"
                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-8 h-8" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"
                   fill="#000000" data-darkreader-inline-fill="" style="--darkreader-inline-fill: #000000">
@@ -175,7 +175,7 @@
             </a>
          </li>
          <li>
-            <a href="#"
+            <a (click)="setActiveMenu(this.menu.RAID)" href="#"
                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-8 h-8" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                   xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60.725 60.725" xml:space="preserve"
@@ -203,7 +203,7 @@
             </a>
          </li>
          <li>
-            <a href="#"
+            <a (click)="setActiveMenu(this.menu.EVENTS)" href="#"
                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-8 h-8" viewBox="-1 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"
                   xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
@@ -234,7 +234,7 @@
 </aside>
 
 <ng-scrollbar style="height: 900px" class="content-scrollbar bg-black">
-   <div class="hidden mod-settings-content p-4 config-content bg-black">
+   <div [hidden]="!(this.activeMenu == menu.SETTINGS)" class="mod-settings-content p-4 config-content">
       <div class="p-4 rounded-lg">
          <div class="grid grid-cols-2 gap-4 mb-4">
             <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-700">
@@ -246,7 +246,7 @@
          </div>
       </div>
    </div>
-   <div class="p-4 config-content">
+   <div [hidden]="!(this.activeMenu == menu.STORAGE)" class="storage-content p-4 config-content">
       <div class="p-4 rounded-lg">
          <p class="text-white text-2xl text-center">CASES</p>
          <div class="flex justify-center pt-4 mb-4 rounded bg-gray-50 dark:bg-gray-700">
@@ -1646,7 +1646,7 @@
          </div>
       </div>
    </div>
-   <div class="hidden p-4 config-content">
+   <div [hidden]="!(this.activeMenu == menu.HIDEOUT)" class="hideout-content p-4 config-content">
       <div class="p-4 rounded-lg">
          <div class="grid grid-cols-3 gap-4 mb-4">
             <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-700">
@@ -1773,7 +1773,7 @@
          </div>
       </div>
    </div>
-   <div class="hidden p-4 config-content">
+   <div [hidden]="!(this.activeMenu == menu.TRADERS)" class="trader-content p-4 config-content">
       <div class="p-4 rounded-lg">
          <div class="grid grid-cols-3 gap-4 mb-4">
             <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-700">
@@ -1900,7 +1900,7 @@
          </div>
       </div>
    </div>
-   <div class="hidden p-4 config-content">
+   <div [hidden]="!(this.activeMenu == menu.ITEMS)" class="items-content p-4 config-content">
       <div class="p-4 rounded-lg">
          <div class="grid grid-cols-3 gap-4 mb-4">
             <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-700">
@@ -2027,7 +2027,7 @@
          </div>
       </div>
    </div>
-   <div class="hidden p-4 config-content">
+   <div [hidden]="!(this.activeMenu == menu.PLAYER)" class="player-content p-4 config-content">
       <div class="p-4 rounded-lg">
          <div class="grid grid-cols-3 gap-4 mb-4">
             <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-700">
@@ -2154,7 +2154,7 @@
          </div>
       </div>
    </div>
-   <div class="hidden p-4 config-content">
+   <div [hidden]="!(this.activeMenu == menu.SCAV)" class="scav-content p-4 config-content">
       <div class="p-4 rounded-lg">
          <div class="grid grid-cols-3 gap-4 mb-4">
             <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-700">
@@ -2281,7 +2281,7 @@
          </div>
       </div>
    </div>
-   <div class="hidden p-4 config-content">
+   <div [hidden]="!(this.activeMenu == menu.RAID)" class="raid-content p-4 config-content">
       <div class="p-4 rounded-lg">
          <div class="grid grid-cols-3 gap-4 mb-4">
             <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-700">
@@ -2408,7 +2408,7 @@
          </div>
       </div>
    </div>
-   <div class="hidden p-4 config-content">
+   <div [hidden]="!(this.activeMenu == menu.EVENTS)" class="events-content p-4 config-content">
       <div class="p-4 rounded-lg">
          <div class="grid grid-cols-3 gap-4 mb-4">
             <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-700">
