@@ -31,8 +31,8 @@
       {
         "fullscreen": false,
         "resizable": false,
-        "title": "beardos-config-emporium-config-editor",
-        "width": 700,
+        "title": "Beardo's Config Emporium Editor",
+        "width": 900,
         "height": 900
       }
     ]
