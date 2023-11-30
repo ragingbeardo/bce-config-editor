@@ -7,6 +7,10 @@
     width: 12rem;
 }
 
+.case-size-label {
+    width: 9.5rem;
+}
+
 .content-scrollbar {
     --scrollbar-border-radius: 7px;
     --scrollbar-padding: 4px;
