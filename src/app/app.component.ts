@@ -10,7 +10,7 @@ enum Menu {
   PLAYER = 6,
   SCAV = 7,
   RAID = 8,
-  EVENTS = 9
+  EVENTS = 9,
 }
 
 @Component({
@@ -19,7 +19,6 @@ enum Menu {
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  
   jsonConfig: any;
   menu = Menu;
   activeMenu: Menu = this.menu.SETTINGS;
@@ -38,10 +37,10 @@ export class AppComponent {
     const jsonData = JSON.stringify(this.jsonConfig);
 
     try {
-      await invoke('write_new_config', { jsonData });
-      console.log('Config successfully written');
+      await invoke("write_new_config", { jsonData });
+      console.log("Config successfully written");
     } catch (error) {
-      console.error('Error writing config:', error);
+      console.error("Error writing config:", error);
     }
   }
 }
