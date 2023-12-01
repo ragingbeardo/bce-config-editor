@@ -1,13 +1,13 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
-import { NgScrollbarModule } from "ngx-scrollbar";
+import { SettingsComponent } from "./component/settings/settings.component";
+import { StorageComponent } from "./component/storage/storage.component";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, FormsModule, NgScrollbarModule],
+  imports: [BrowserModule, SettingsComponent, StorageComponent],
   providers: [],
   bootstrap: [AppComponent],
 })
