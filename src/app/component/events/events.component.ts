@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-events',
   standalone: true,
-  imports: [],
+  imports: [SharedModule],
   templateUrl: './events.component.html',
-  styleUrl: './events.component.css'
+  styleUrls: ['./events.component.css', '../../shared/shared.css']
 })
 export class EventsComponent {
 

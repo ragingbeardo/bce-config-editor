@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-hideout',
   standalone: true,
-  imports: [],
+  imports: [SharedModule],
   templateUrl: './hideout.component.html',
-  styleUrl: './hideout.component.css'
+  styleUrls: ['./hideout.component.css', '../../shared/shared.css']
 })
 export class HideoutComponent {
 

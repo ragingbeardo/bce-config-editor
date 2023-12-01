@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-player',
   standalone: true,
-  imports: [],
+  imports: [SharedModule],
   templateUrl: './player.component.html',
-  styleUrl: './player.component.css'
+  styleUrls: ['./player.component.css', '../../shared/shared.css']
 })
 export class PlayerComponent {
 

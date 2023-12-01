@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-traders',
   standalone: true,
-  imports: [],
+  imports: [SharedModule],
   templateUrl: './traders.component.html',
-  styleUrl: './traders.component.css'
+  styleUrls: ['./traders.component.css', '../../shared/shared.css']
 })
 export class TradersComponent {
 

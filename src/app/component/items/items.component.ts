@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-items',
   standalone: true,
-  imports: [],
+  imports: [SharedModule],
   templateUrl: './items.component.html',
-  styleUrl: './items.component.css'
+  styleUrls: ['./items.component.css', '../../shared/shared.css']
 })
 export class ItemsComponent {
 
